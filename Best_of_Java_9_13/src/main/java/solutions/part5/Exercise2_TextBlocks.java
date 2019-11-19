@@ -9,6 +9,7 @@ package solutions.part5;
  */
 public class Exercise2_TextBlocks 
 {
+	@SuppressWarnings("preview")
 	public static void main(final String[] args) 
 	{
 	

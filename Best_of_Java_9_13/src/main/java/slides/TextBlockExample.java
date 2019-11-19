@@ -6,6 +6,7 @@ import javax.script.ScriptException;
 
 public class TextBlockExample {
 
+	@SuppressWarnings("preview")
 	public static void main(String[] args) throws ScriptException {
 
 		String xmlString = """
