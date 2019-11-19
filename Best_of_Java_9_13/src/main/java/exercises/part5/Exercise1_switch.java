@@ -17,6 +17,7 @@ public class Exercise1_switch
 		dumpEvenOddChecker(value);
 	}
 
+	@SuppressWarnings("preview")
 	private static void dumpEvenOddChecker(int value) {
 		String result;
 
