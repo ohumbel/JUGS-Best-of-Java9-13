@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility=13
+targetCompatibility=13
+
+repositories
+{
+	jcenter();
+}
+
+// Aktivierung von switch und raw string literals
+tasks.withType(JavaCompile) {
+	options.compilerArgs += ["--enable-preview"]
+}
