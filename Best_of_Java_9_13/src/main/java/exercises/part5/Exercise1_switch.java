@@ -21,11 +21,14 @@ public class Exercise1_switch {
 		return
 
 		switch (value) {
-		case 1, 3, 5, 7, 9 -> "odd";
+		case 1, 3, 5, 7, 9:
+			yield "odd";
 
-		case 0, 2, 4, 6, 8, 10 -> "even";
+		case 0, 2, 4, 6, 8, 10:
+			yield "even";
 
-		default -> "only implemented for values < 10";
+		default:
+			yield "only implemented for values < 10";
 		};
 
 	}
