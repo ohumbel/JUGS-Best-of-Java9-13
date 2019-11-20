@@ -43,6 +43,6 @@ public class Exercise5_CountSundaysOf2017Example
 	// Tipp: 
 	private static Stream<LocalDate> allBetween(DayOfWeek dayOfWeek, LocalDate start, LocalDate end) 
 	{
-		return Stream.of(); // TODO
+		return start.datesUntil(end).filter(date -> dayOfWeek.equals(date.getDayOfWeek()));
 	}
 }
