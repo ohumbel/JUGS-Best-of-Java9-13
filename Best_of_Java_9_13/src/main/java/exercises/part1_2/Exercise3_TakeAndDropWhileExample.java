@@ -2,6 +2,7 @@ package exercises.part1_2;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Beispielprogramm für den Workshop "Java 9 Hands On" / das Buch "Java 9 -- Die Neuerungen"
@@ -14,8 +15,8 @@ public class Exercise3_TakeAndDropWhileExample
 {
     public static void main(final String[] args) 
     {
-		final Predicate<String> isBodyStart = /*TODO */ null;
-		final Predicate<String> isBodyEnd = /*TODO */ null;
+		final Predicate<String> isBodyStart = s -> s.equalsIgnoreCase("<body>");
+		final Predicate<String> isBodyEnd = s -> s.equalsIgnoreCase("</body>");
 		
 		final List<String> tokens = List.of("<html>", 
 			  "<head>", "<title>This is TITLE</title>", "</head>",
@@ -27,6 +28,8 @@ public class Exercise3_TakeAndDropWhileExample
 		
 		extractor(tokens, isBodyStart, isBodyEnd).forEach(System.out::println);
 		
+		System.out.println("---\n");
+		
 		// REUSE to EXTRACT HEAD infos
 		extractor(tokens, str -> str.equalsIgnoreCase("<HEAD>"), 
 				          str -> str.equalsIgnoreCase("</HEAD>")).forEach(System.out::println);
@@ -34,7 +37,11 @@ public class Exercise3_TakeAndDropWhileExample
 
 	private static List<String> extractor(List<String> tokens, Predicate<String> isStart, Predicate<String> isEnd) 
 	{		
-		return /*TODO */ null;
+		return tokens.stream()
+				.dropWhile(isStart.negate())
+				.skip(1).
+				takeWhile(isEnd.negate())
+				.collect(Collectors.toList());
 	}
 }
 
