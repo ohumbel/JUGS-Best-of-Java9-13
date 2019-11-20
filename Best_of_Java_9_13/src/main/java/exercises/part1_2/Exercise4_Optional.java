@@ -15,18 +15,23 @@ public class Exercise4_Optional
     public static void main(final String[] args)
     {
         final Optional<String> optCustomer = multiFindCustomerJdk8("Tim");
-        optCustomer.ifPresentOrElse(str -> System.out.println("found: " + str), 
-                                    () -> System.out.println("not found"));
+        optCustomer.ifPresentOrElse(str -> System.out.println("8 found: " + str), 
+                                    () -> System.out.println("8 not found"));
 
         final Optional<String> optCustomer2 = multiFindCustomerJdk9("Tim");
-        optCustomer2.ifPresentOrElse(str -> System.out.println("found: " + str), 
-                                     () -> System.out.println("not found"));
+        optCustomer2.ifPresentOrElse(str -> System.out.println("9 found: " + str), 
+                                     () -> System.out.println("9 not found"));
+
+        final Optional<String> optCustomer3 = multiFindCustomerJdk9("UNKNOWNs");
+        optCustomer3.ifPresentOrElse(str -> System.out.println("9 found: " + str), 
+                                     () -> System.out.println("9 not found"));
     }
 
 	private static Optional<String> multiFindCustomerJdk9(final String customerId)
     {
-        // TODO
-        return Optional.empty();
+		return findInCache(customerId)
+				.or(() -> findInMemory(customerId))
+				.or(() -> findInDb(customerId));
     }
     
     private static Optional<String> multiFindCustomerJdk8(final String customerId)
@@ -54,7 +59,7 @@ public class Exercise4_Optional
 
     private static Optional<String> findInMemory(final String customerId)
     {
-        System.out.println("findInMemory");
+        //System.out.println("findInMemory");
         final Stream<String> customers = Stream.of("Tim", "Tom", "Mike", "Andy");
         
         return customers.filter(name -> name.contains(customerId))
@@ -63,13 +68,13 @@ public class Exercise4_Optional
     
     private static Optional<String> findInCache(final String customerId)
     {
-        System.out.println("findInCache");
+        //System.out.println("findInCache");
         return Optional.empty();
     }
 
     private static Optional<String> findInDb(final String customerId)
     {
-        System.out.println("findInDb");
+        //System.out.println("findInDb");
         return Optional.empty();
     }
 }
