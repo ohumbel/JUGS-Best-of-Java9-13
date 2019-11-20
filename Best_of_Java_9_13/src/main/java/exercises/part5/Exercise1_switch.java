@@ -8,32 +8,25 @@ package exercises.part5;
  * 
  *         Copyright 2017/2018/2019 by Michael Inden
  */
-public class Exercise1_switch 
-{
+public class Exercise1_switch {
 	public static void main(String[] args) {
 
 		int value = 7;
 
-		dumpEvenOddChecker(value);
+		System.out.println("result: " + dumpEvenOddChecker(value));
 	}
 
 	@SuppressWarnings("preview")
-	private static void dumpEvenOddChecker(int value) {
-		String result;
+	private static String dumpEvenOddChecker(int value) {
+		return
 
 		switch (value) {
-		case 1, 3, 5, 7, 9:
-			result = "odd";
-			break;
+		case 1, 3, 5, 7, 9 -> "odd";
 
-		case 0, 2, 4, 6, 8, 10:
-			result = "even";
-			break;
+		case 0, 2, 4, 6, 8, 10 -> "even";
 
-		default:
-			result = "only implemented for values < 10";
-		}
+		default -> "only implemented for values < 10";
+		};
 
-		System.out.println("result: " + result);
 	}
 }
