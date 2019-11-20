@@ -16,6 +16,8 @@ public class Exercise1a_var
 
 	static void funWithVar()
 	{
-		// TODO
+		var name = "Mike";
+		var age = 42;
+		System.out.println(String.format("%, %s", name, age));
 	}
 }
